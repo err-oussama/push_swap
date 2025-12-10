@@ -4,8 +4,8 @@
 
 void	third_step(t_stack *a, t_stack *b)
 {
-	if (a->size < 5)
-		return (sort_small_stack(a));	
+	//if (a->size < 5)
+		return (sort_small_stack(a, b));	
 }
 
 
