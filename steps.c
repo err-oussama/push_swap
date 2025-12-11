@@ -13,7 +13,7 @@ int second_step(t_stack **a, t_stack **b)
 {
 	if (!is_sorted(*a))
 		third_step(*a,*b);
-	display(*a);
+//	display(*a);
 	clear(a);
 	clear(b);
 	return (0);

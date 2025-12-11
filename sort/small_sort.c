@@ -15,7 +15,9 @@ void	sort_small_stack(t_stack *a, t_stack *b)
 		return ;
 	fill_sort_array(&arr, a);
 	if (a->size == 4)
-		return (sort_4(a,b, &arr));
+		return (sort_4(a, b, arr.arr));
+	if (a->size == 5)
+		return (sort_5(a,b,arr.arr));
 }
 
 void	sort_3(t_stack *a)
@@ -28,61 +30,38 @@ void	sort_3(t_stack *a)
 		swap(a, 'a');
 }
 
-void	fill_sort_array(t_sorted_array *arr, t_stack *a)
-{
-	t_node	*tmp;
-	int		i;
-
-	tmp = a->head;
-	i = 0;
-	while (tmp)
-	{
-		arr->arr[i++] = tmp->n;
-		tmp = tmp->next;
-	}
-	sort_array(arr);
-}
-
-void	sort_array(t_sorted_array *arr)
-{
-	int	i;
-	int	j;
-	int	t;
-
-	i = 0;
-	while (i < arr->size)
-	{
-		j = i;
-		while (++j < arr->size)
-		{
-			if (arr->arr[i] > arr->arr[j])
-			{
-				t = arr->arr[i];
-				arr->arr[i] = arr->arr[j];
-				arr->arr[j] = t;
-			}
-		}
-		i++;
-	}
-}
-
-void	sort_4(t_stack *a, t_stack *b, t_sorted_array *arr)
+void	sort_4(t_stack *a, t_stack *b, int *arr)
 {
 	int	index;
 
-	index = search(a, arr->arr[0]);
-	if (index == 0)
-		push_op(a, b, 'b');
-	else if (index == 1)
+	index = search(a, arr[0]);
+	if (index == 1)
 		swap(a, 'a');
 	else if (index == 3)
 		rev_rotate(a, 'a');
-	else
+	else if (index == 2)
 	{
 		rev_rotate(a, 'a');
 		rev_rotate(a, 'a');
 	}
 	push_op(a, b, 'b');
 	sort_3(a);
+	push_op(a, b, 'a');
+}
+
+void	sort_5(t_stack *a, t_stack *b, int *arr)
+{
+	int	index;
+
+	index = search(a, arr[0]);
+	if (index == 1)
+		swap(a, 'a');
+	else if (index == 4)
+		rev_rotate(a, 'a');
+	else if (index == 3 || index == 2)
+			while (index++ < 5)
+				rev_rotate(a, 'a');
+	push_op(a,b,'b');
+	sort_4(a,b, &arr[1]);
 	push_op(a, b, 'a');
 }
