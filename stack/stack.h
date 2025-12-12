@@ -44,6 +44,8 @@ int						search(t_stack *stack, int n);
 int						is_sorted(t_stack *stack);
 
 
+int get_pos_inc(t_stack *stack, int n);
+int get_pos_dec(t_stack *stack, int n);
 
 
 int						get_index_min(t_stack stack);

@@ -31,6 +31,50 @@ int	search(t_stack *stack, int n)
 	return (-1);
 }
 
+
+
+int get_pos_dec(t_stack *stack, int n)
+{
+    t_node *tmp;
+    int i;
+
+    if (n > stack->head->n)
+        return (0);
+    if (n < stack->tail->n)
+        return (stack->size);
+    i = 0;
+    tmp = stack->head;
+    while (tmp->next)
+    {
+        if (tmp->n > n && n > tmp->next->n)
+            return (i + 1);
+        i++;
+        tmp = tmp->next;
+    }
+    return (i);
+}
+
+int get_pos_inc(t_stack *stack, int n)
+{
+    t_node *tmp;
+    int i;
+
+    if (n < stack->head->n)
+        return (0);
+    if (n > stack->tail->n)
+        return (stack->size);
+    i = 0;
+    tmp = stack->head;
+    while (tmp->next)
+    {
+        if (tmp->n < n && n < tmp->next->n)
+            return (i + 1);
+        i++;
+        tmp = tmp->next;
+    }
+    return (i);
+}
+
 int	is_sorted(t_stack *stack)
 {
 	t_node	*tmp;
@@ -47,30 +91,19 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+
+
 void display(t_stack *stack)
 {
 	t_node *tmp;
 
 	tmp = stack->head;
-	printf("top => ");
-	while (tmp)
+    printf("\n\n");
+    while (tmp)
 	{
-		printf("%i => ", tmp->n);
+		printf("%i\n", tmp->n);
 		tmp = tmp->next;
 	}
-	printf("\n");
+    printf("\n\n");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

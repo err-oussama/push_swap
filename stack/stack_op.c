@@ -53,7 +53,8 @@ void	rotate(t_stack *stack, char c)
 	stack->head = stack->head->next;
 	stack->tail->next = node;
 	node->next = NULL;
-	op[0] = 'r';
+    stack->tail = node;
+    op[0] = 'r';
 	op[1] = c;
 	op[2] = '\n';
 	write(1, op,3);

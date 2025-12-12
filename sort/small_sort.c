@@ -1,24 +1,5 @@
 #include "sort.h"
-#include <strings.h>
 
-void	sort_small_stack(t_stack *a, t_stack *b)
-{
-	t_sorted_array	arr;
-
-	if (a->size == 2)
-		return (swap(a, 'a'));
-	if (a->size == 3)
-		return (sort_3(a));
-	arr.size = a->size;
-	arr.arr = c_alloc(a->size, sizeof(int));
-	if (!arr.arr)
-		return ;
-	fill_sort_array(&arr, a);
-	if (a->size == 4)
-		return (sort_4(a, b, arr.arr));
-	if (a->size == 5)
-		return (sort_5(a,b,arr.arr));
-}
 
 void	sort_3(t_stack *a)
 {
