@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "stack.h"
+#include <stddef.h>
 
 int	search(t_stack *stack, int n)
 {
@@ -92,6 +93,17 @@ int	is_sorted(t_stack *stack)
 }
 
 
+int	get_index(t_stack *stack, size_t index)
+{
+	t_node *tmp;
+	size_t i;
+
+	i = 0;
+	tmp = stack->head;
+    while (tmp && i++ < index)
+		tmp = tmp->next;
+	return (tmp->n);
+}
 
 void display(t_stack *stack)
 {

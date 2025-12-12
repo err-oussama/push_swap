@@ -73,10 +73,10 @@ int	main(int argc, char **argv)
 	if (!is_valid)
         write(2, "Error\n", 6);
     else
-        if (!is_sorted(a))
+	{    if (!is_sorted(a))
             sort(a, b);
+	}display(a);
     clear(&a);
 	clear(&b);
-
 	return (1);
 }

@@ -48,6 +48,7 @@ int get_pos_inc(t_stack *stack, int n);
 int get_pos_dec(t_stack *stack, int n);
 
 
+int	get_index(t_stack *stack, size_t index);
 int						get_index_min(t_stack stack);
 
 //						stack operation

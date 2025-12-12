@@ -25,10 +25,7 @@ void insert(t_stack *a, t_stack *b, size_t index, char c);
 void	sort_array(t_sorted_array *arr);
 void	fill_sort_array(t_sorted_array *arr, t_stack *a);
 
-
-
-
-
+size_t	megration_cost(t_stack *a, t_stack *b, size_t from, size_t to);
 
 
 #endif

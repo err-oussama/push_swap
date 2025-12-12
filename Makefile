@@ -11,7 +11,7 @@ SRT_DIR = sort
 STK_DIR = stack
 
 LIB_SRC = a_to_l.c c_alloc.c split.c str_lcpy.c str_len.c sub_str.c
-SRT_SRC = larg_sort.c small_sort.c small_sort_helper.c larg_sort_helper.c
+SRT_SRC = larg_sort.c small_sort.c small_sort_helper.c larg_sort_helper.c megration.c
 STK_SRC = stack_I.c stack_II.c stack_op.c
 
 # prepend directories
