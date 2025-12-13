@@ -26,23 +26,22 @@ t_stack	*init_stack(void)
 	return (stack);
 }
 
-t_node	*new_node(int n)
+t_node	*new_node(int value)
 {
 	t_node	*node;
 
 	node = malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
-	node->n = n;
+	node->value = value;
+	node->index = -1;
 	node->next = NULL;
 	return (node);
 }
 
-void	push(t_stack *stack, int n)
+void	push(t_stack *stack, t_node * node)
 {
-	t_node	*node;
 
-	node = new_node(n);
 	if (!stack->head)
 	{
 		stack->head = node;
@@ -55,26 +54,24 @@ void	push(t_stack *stack, int n)
 	stack->size++;
 }
 
-int	pop(t_stack *stack)
+t_node *pop(t_stack *stack)
 {
 	t_node	*node;
-	int		n;
 
 	if (stack->size == 1)
 	{
-		n = stack->head->n;
-		free(stack->head);
+		node = stack->head;
 		stack->tail = NULL;
 		stack->head = NULL;
 		stack->size--;
-		return (n);
+		node->next = NULL;
+		return (node);
 	}
 	node = stack->head;
-	n = stack->head->n;
 	stack->head = stack->head->next;
-	free(node);
 	stack->size--;
-	return (n);
+	node->next = NULL;
+	return (node);
 }
 
 void	clear(t_stack **stack)

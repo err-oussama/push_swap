@@ -17,23 +17,15 @@
 
 void sort(t_stack *a, t_stack *b)
 {
-    t_sorted_array	arr;
-
 	if (a->size == 2)
 		return (swap(a, 'a'));
 	if (a->size == 3)
 		return (sort_3(a));
-	arr.size = a->size;
-	arr.arr = c_alloc(a->size, sizeof(int));
-	if (!arr.arr)
-		return ;
-	fill_sort_array(&arr, a);
 	if (a->size == 4)
-		return (sort_4(a, b, arr.arr));
+		return (sort_4(a, b));
 	if (a->size == 5)
-		return (sort_5(a,b,arr.arr));
-    sort_larg_stack(a,b, arr.arr);
-    free(arr.arr);
+		return (sort_5(a,b));
+    sort_larg_stack(a,b);
 }
 int	check_input(t_stack *a, char **args, int argc)
 {
@@ -52,7 +44,7 @@ int	check_input(t_stack *a, char **args, int argc)
 			free(array[i]);
 			if (n == INVALID_INPUT || search(a, (int)n) != -1)
 				return (clear_array(array, i));
-			push(a, (int)n);
+			push(a, new_node((int)n));
 		}
 		free(array);
 	}
@@ -75,7 +67,9 @@ int	main(int argc, char **argv)
     else
 	{    if (!is_sorted(a))
             sort(a, b);
-	}display(a);
+	}
+  //  display(a);
+//   display(b);
     clear(&a);
 	clear(&b);
 	return (1);

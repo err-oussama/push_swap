@@ -19,7 +19,8 @@
 typedef struct s_node	t_node;
 struct					s_node
 {
-	int					n;
+	int					value;
+	size_t 				index;
 	t_node				*next;
 };
 
@@ -32,29 +33,28 @@ typedef struct s_stack
 
 
 
-void display(t_stack *stack);
 
 t_stack					*init_stack(void);
 t_node					*new_node(int n);
 
-void					push(t_stack *stack, int n);
-int						pop(t_stack *stack);
+void					push(t_stack *stack, t_node* node);
+t_node		*pop(t_stack *stack);
 void					clear(t_stack **stack);
 int						search(t_stack *stack, int n);
 int						is_sorted(t_stack *stack);
 
 
-int get_pos_inc(t_stack *stack, int n);
-int get_pos_dec(t_stack *stack, int n);
 
 
 int	get_index(t_stack *stack, size_t index);
-int						get_index_min(t_stack stack);
+int						get_min(t_stack *stack);
 
 //						stack operation
 void					swap(t_stack *stack, char c);
 void					rotate(t_stack *stack, char c);
 void					rev_rotate(t_stack *stack, char c);
 void					push_op(t_stack *a, t_stack *b, char c);
+
+
 
 #endif

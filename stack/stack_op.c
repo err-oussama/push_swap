@@ -33,9 +33,9 @@ void	swap(t_stack *stack, char c)
 
 	if (stack->size <= 1)
 		return ;
-	tmp = stack->head->n;
-	stack->head->n = stack->head->next->n;
-	stack->head->next->n = tmp;
+	tmp = stack->head->value;
+	stack->head->value = stack->head->next->value;
+	stack->head->next->value = tmp;
 	op[0] = 's';
 	op[1] = c;
 	op[2] = '\n';

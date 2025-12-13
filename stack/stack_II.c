@@ -24,7 +24,7 @@ int	search(t_stack *stack, int n)
 	tmp = stack->head;
 	while (tmp)
 	{
-		if (tmp->n == n)
+		if (tmp->value == n)
 			return (i);
 		tmp = tmp->next;
 		i++;
@@ -32,49 +32,6 @@ int	search(t_stack *stack, int n)
 	return (-1);
 }
 
-
-
-int get_pos_dec(t_stack *stack, int n)
-{
-    t_node *tmp;
-    int i;
-
-    if (n > stack->head->n)
-        return (0);
-    if (n < stack->tail->n)
-        return (stack->size);
-    i = 0;
-    tmp = stack->head;
-    while (tmp->next)
-    {
-        if (tmp->n > n && n > tmp->next->n)
-            return (i + 1);
-        i++;
-        tmp = tmp->next;
-    }
-    return (i);
-}
-
-int get_pos_inc(t_stack *stack, int n)
-{
-    t_node *tmp;
-    int i;
-
-    if (n < stack->head->n)
-        return (0);
-    if (n > stack->tail->n)
-        return (stack->size);
-    i = 0;
-    tmp = stack->head;
-    while (tmp->next)
-    {
-        if (tmp->n < n && n < tmp->next->n)
-            return (i + 1);
-        i++;
-        tmp = tmp->next;
-    }
-    return (i);
-}
 
 int	is_sorted(t_stack *stack)
 {
@@ -85,13 +42,12 @@ int	is_sorted(t_stack *stack)
 	tmp = stack->head;
 	while (tmp->next)
 	{
-		if (tmp->n > tmp->next->n)
+		if (tmp->value > tmp->next->value)
 			return (0);
 		tmp = tmp->next;
 	}
 	return (1);
 }
-
 
 int	get_index(t_stack *stack, size_t index)
 {
@@ -102,20 +58,21 @@ int	get_index(t_stack *stack, size_t index)
 	tmp = stack->head;
     while (tmp && i++ < index)
 		tmp = tmp->next;
-	return (tmp->n);
+	return (tmp->value);
 }
 
-void display(t_stack *stack)
+int get_min(t_stack *stack)
 {
-	t_node *tmp;
+    t_node* tmp;
+    int min;
 
-	tmp = stack->head;
-    printf("\n\n");
+    tmp = stack->head;
+    min = tmp->value;
     while (tmp)
-	{
-		printf("%i\n", tmp->n);
-		tmp = tmp->next;
-	}
-    printf("\n\n");
+    {
+        if (tmp->value < min)
+            min = tmp->value;
+        tmp = tmp->next;
+    }
+    return (min);
 }
-
