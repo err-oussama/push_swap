@@ -2,9 +2,11 @@
 
 void	sort_3(t_stack *a)
 {
-	if (a->head->next->value > a->head->value && a->head->next->value > a->tail->value)
+	if (a->head->next->value > a->head->value
+		&& a->head->next->value > a->tail->value)
 		rev_rotate(a, 'a');
-	else if (a->head->value > a->head->next->value && a->head->value > a->tail->value)
+	else if (a->head->value > a->head->next->value
+		&& a->head->value > a->tail->value)
 		rotate(a, 'a');
 	if (a->head->next->value < a->head->value)
 		swap(a, 'a');
@@ -39,9 +41,9 @@ void	sort_5(t_stack *a, t_stack *b)
 	else if (index == 4)
 		rev_rotate(a, 'a');
 	else if (index == 3 || index == 2)
-			while (index++ < 5)
-				rev_rotate(a, 'a');
-	push_op(a,b,'b');
-	sort_4(a,b);
+		while (index++ < 5)
+			rev_rotate(a, 'a');
+	push_op(a, b, 'b');
+	sort_4(a, b);
 	push_op(a, b, 'a');
 }

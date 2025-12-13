@@ -11,12 +11,11 @@
 /* ************************************************************************** */
 
 #include "stack.h"
-#include <stddef.h>
 
 int	search(t_stack *stack, int n)
 {
 	t_node	*tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!stack->size)
@@ -31,7 +30,6 @@ int	search(t_stack *stack, int n)
 	}
 	return (-1);
 }
-
 
 int	is_sorted(t_stack *stack)
 {
@@ -51,28 +49,28 @@ int	is_sorted(t_stack *stack)
 
 int	get_index(t_stack *stack, size_t index)
 {
-	t_node *tmp;
-	size_t i;
+	t_node	*tmp;
+	size_t	i;
 
 	i = 0;
 	tmp = stack->head;
-    while (tmp && i++ < index)
+	while (tmp && i++ < index)
 		tmp = tmp->next;
 	return (tmp->value);
 }
 
-int get_min(t_stack *stack)
+int	get_min(t_stack *stack)
 {
-    t_node* tmp;
-    int min;
+	t_node	*tmp;
+	int		min;
 
-    tmp = stack->head;
-    min = tmp->value;
-    while (tmp)
-    {
-        if (tmp->value < min)
-            min = tmp->value;
-        tmp = tmp->next;
-    }
-    return (min);
+	tmp = stack->head;
+	min = tmp->value;
+	while (tmp)
+	{
+		if (tmp->value < min)
+			min = tmp->value;
+		tmp = tmp->next;
+	}
+	return (min);
 }

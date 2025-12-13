@@ -14,7 +14,7 @@
 
 void	push_op(t_stack *a, t_stack *b, char c)
 {
-	char op[3];
+	char	op[3];
 
 	if (c == 'a')
 		push(a, pop(b));
@@ -23,12 +23,12 @@ void	push_op(t_stack *a, t_stack *b, char c)
 	op[0] = 'p';
 	op[1] = c;
 	op[2] = '\n';
-	write(1, op,3);
+	write(1, op, 3);
 }
 
 void	swap(t_stack *stack, char c)
 {
-	int	tmp;
+	int		tmp;
 	char	op[3];
 
 	if (stack->size <= 1)
@@ -39,13 +39,13 @@ void	swap(t_stack *stack, char c)
 	op[0] = 's';
 	op[1] = c;
 	op[2] = '\n';
-	write(1, op,3);
+	write(1, op, 3);
 }
 
 void	rotate(t_stack *stack, char c)
 {
 	t_node	*node;
-	char op[3];
+	char	op[3];
 
 	if (stack->size <= 1)
 		return ;
@@ -53,11 +53,11 @@ void	rotate(t_stack *stack, char c)
 	stack->head = stack->head->next;
 	stack->tail->next = node;
 	node->next = NULL;
-    stack->tail = node;
-    op[0] = 'r';
+	stack->tail = node;
+	op[0] = 'r';
 	op[1] = c;
 	op[2] = '\n';
-	write(1, op,3);
+	write(1, op, 3);
 }
 
 void	rev_rotate(t_stack *stack, char c)

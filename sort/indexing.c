@@ -1,11 +1,10 @@
 #include "sort.h"
 
-
 static void	sort_array(int *arr, size_t size)
 {
 	size_t	i;
-	size_t j;
-	int t;
+	size_t	j;
+	int		t;
 
 	i = -1;
 	while (++i < size)
@@ -22,7 +21,8 @@ static void	sort_array(int *arr, size_t size)
 		}
 	}
 }
-void	fill_sort_array(int *arr, t_stack *a)
+
+static void	fill_sort_array(int *arr, t_stack *a)
 {
 	t_node	*tmp;
 	int		i;
@@ -37,18 +37,18 @@ void	fill_sort_array(int *arr, t_stack *a)
 	sort_array(arr, a->size);
 }
 
-int *indexing(t_stack *stack)
+int	indexing(t_stack *stack)
 {
-	t_node *tmp;
-	size_t i;
-	int *arr;
+	t_node	*tmp;
+	size_t	i;
+	int		*arr;
 
 	arr = malloc(sizeof(int) * stack->size);
 	if (!arr)
-		return (NULL);
+		return (0);
 	fill_sort_array(arr, stack);
 	tmp = stack->head;
-	while(tmp)
+	while (tmp)
 	{
 		i = -1;
 		while (++i < stack->size)
@@ -56,5 +56,6 @@ int *indexing(t_stack *stack)
 				tmp->index = i;
 		tmp = tmp->next;
 	}
-	return (arr);
+	free(arr);
+	return (1);
 }

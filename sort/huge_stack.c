@@ -1,41 +1,41 @@
 #include "sort.h"
-#include <stddef.h>
 
-static int get_chunk_size(int size)
+static int	get_chunk_size(int size)
 {
-    if (size <= 100)
-        return (15);
-    return (30); 
+	if (size <= 100)
+		return (15);
+	return (30);
 }
 
-void sort_butterfly(t_stack *a, t_stack *b)
+void	sort_butterfly(t_stack *a, t_stack *b)
 {
-    size_t chunk_size; // chunk size
-    size_t pushed;
+	size_t	chunk_size;
+	size_t	pushed;
 
-    pushed = 0;
-    chunk_size = get_chunk_size(a->size);
-    while (a->size)
-    {
-        if (a->head->index <= pushed)
-        {
-            push_op(a, b, 'b');
-            rotate(b, 'b');
-            pushed++;
-        }
-        else if (a->head->index <= pushed + chunk_size)
-        {
-            push_op(a, b, 'b');
-            pushed++;
-        }
-        else
-            rotate(a, 'a');
-    }
+	pushed = 0;
+	chunk_size = get_chunk_size(a->size);
+	while (a->size)
+	{
+		if (a->head->index <= pushed)
+		{
+			push_op(a, b, 'b');
+			rotate(b, 'b');
+			pushed++;
+		}
+		else if (a->head->index <= pushed + chunk_size)
+		{
+			push_op(a, b, 'b');
+			pushed++;
+		}
+		else
+			rotate(a, 'a');
+	}
 }
-void push_to_a(t_stack *a, t_stack *b)
+
+void	push_to_a(t_stack *a, t_stack *b)
 {
-	t_node *tmp;
-	size_t index;
+	t_node	*tmp;
+	size_t	index;
 
 	while (b->size)
 	{
@@ -47,19 +47,21 @@ void push_to_a(t_stack *a, t_stack *b)
 			{
 				to_top(b, index, 'b');
 				push_op(a, b, 'a');
-				break;
+				break ;
 			}
 			tmp = tmp->next;
 			index++;
 		}
 	}
 }
+
 void	sort_larg_stack(t_stack *a, t_stack *b)
 {
-	int * arr = indexing(a);
+	int	arr;
+
+	arr = indexing(a);
 	if (!arr)
-		return;
-	free(arr);
+		return ;
 	sort_butterfly(a, b);
-	push_to_a(a,b);
+	push_to_a(a, b);
 }

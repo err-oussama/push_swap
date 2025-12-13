@@ -11,11 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "sort/sort.h"
-#include "stack/stack.h"
 
-
-void sort(t_stack *a, t_stack *b)
+void	sort(t_stack *a, t_stack *b)
 {
 	if (a->size == 2)
 		return (swap(a, 'a'));
@@ -24,9 +21,10 @@ void sort(t_stack *a, t_stack *b)
 	if (a->size == 4)
 		return (sort_4(a, b));
 	if (a->size == 5)
-		return (sort_5(a,b));
-    sort_larg_stack(a,b);
+		return (sort_5(a, b));
+	sort_larg_stack(a, b);
 }
+
 int	check_input(t_stack *a, char **args, int argc)
 {
 	char	**array;
@@ -63,14 +61,13 @@ int	main(int argc, char **argv)
 	b = init_stack();
 	is_valid = check_input(a, &argv[1], argc - 1);
 	if (!is_valid)
-        write(2, "Error\n", 6);
-    else
-	{    if (!is_sorted(a))
-            sort(a, b);
+		write(2, "Error\n", 6);
+	else
+	{
+		if (!is_sorted(a))
+			sort(a, b);
 	}
-  //  display(a);
-//   display(b);
-    clear(&a);
+	clear(&a);
 	clear(&b);
 	return (1);
 }

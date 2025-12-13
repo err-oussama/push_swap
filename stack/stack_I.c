@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "stack.h"
-#include <stdlib.h>
 
 t_stack	*init_stack(void)
 {
@@ -39,9 +38,8 @@ t_node	*new_node(int value)
 	return (node);
 }
 
-void	push(t_stack *stack, t_node * node)
+void	push(t_stack *stack, t_node *node)
 {
-
 	if (!stack->head)
 	{
 		stack->head = node;
@@ -54,7 +52,7 @@ void	push(t_stack *stack, t_node * node)
 	stack->size++;
 }
 
-t_node *pop(t_stack *stack)
+t_node	*pop(t_stack *stack)
 {
 	t_node	*node;
 
