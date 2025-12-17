@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   str_cmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oerrami <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 22:38:26 by oerrami           #+#    #+#             */
-/*   Updated: 2025/12/17 22:38:27 by oerrami          ###   ########.fr       */
+/*   Created: 2025/12/17 22:34:22 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/17 22:34:23 by oerrami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "lib.h"
 
-# include "lib.h"
-# include "sort/sort.h"
-# include "stack/stack.h"
-# include <stdlib.h>
-# include <unistd.h>
-
-# define INVALID_INPUT 4294967295
-# define MIN -2147483648
-# define MAX 2147483647
-
-int	check_input(t_stack *a, char **args, int argc);
-
-#endif
+int	str_cmp(const char *s1, const char *s2)
+{
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (0);
+		s1++;
+		s2++;
+	}
+	return (1);
+}

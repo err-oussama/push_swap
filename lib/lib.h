@@ -23,5 +23,5 @@ void	*c_alloc(size_t nmemb, size_t size);
 char	**split(char const *s, size_t *n);
 size_t	str_len(const char *s);
 long	a_to_l(const char *str);
-
+int		str_cmp(const char *s1, const char *s2);
 #endif

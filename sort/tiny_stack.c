@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tiny_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oerrami <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/17 22:36:35 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/17 22:36:44 by oerrami          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "sort.h"
 
 void	sort_3(t_stack *a)
@@ -46,4 +58,17 @@ void	sort_5(t_stack *a, t_stack *b)
 	push_op(a, b, 'b');
 	sort_4(a, b);
 	push_op(a, b, 'a');
+}
+
+void	sort(t_stack *a, t_stack *b)
+{
+	if (a->size == 2)
+		return (swap(a, 'a'));
+	if (a->size == 3)
+		return (sort_3(a));
+	if (a->size == 4)
+		return (sort_4(a, b));
+	if (a->size == 5)
+		return (sort_5(a, b));
+	sort_larg_stack(a, b);
 }

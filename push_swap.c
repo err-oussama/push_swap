@@ -12,43 +12,6 @@
 
 #include "push_swap.h"
 
-void	sort(t_stack *a, t_stack *b)
-{
-	if (a->size == 2)
-		return (swap(a, 'a'));
-	if (a->size == 3)
-		return (sort_3(a));
-	if (a->size == 4)
-		return (sort_4(a, b));
-	if (a->size == 5)
-		return (sort_5(a, b));
-	sort_larg_stack(a, b);
-}
-
-int	check_input(t_stack *a, char **args, int argc)
-{
-	char	**array;
-	long	n;
-	size_t	i;
-
-	while (argc--)
-	{
-		array = split(args[argc], &i);
-		if (!array)
-			return (0);
-		while (i--)
-		{
-			n = a_to_l(array[i]);
-			free(array[i]);
-			if (n == INVALID_INPUT || search(a, (int)n) != -1)
-				return (clear_array(array, i));
-			push(a, new_node((int)n));
-		}
-		free(array);
-	}
-	return (1);
-}
-
 int	main(int argc, char **argv)
 {
 	int		is_valid;
@@ -69,5 +32,7 @@ int	main(int argc, char **argv)
 	}
 	clear(&a);
 	clear(&b);
+	if (is_valid)
+		return (0);
 	return (1);
 }
