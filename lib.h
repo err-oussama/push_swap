@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oerrami <oerrami@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/05 06:22:43 by oerrami           #+#    #+#             */
-/*   Updated: 2025/12/05 06:22:49 by oerrami          ###   ########.fr       */
+/*   Created: 2025/12/19 05:14:46 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/19 05:14:48 by oerrami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_H
 # define LIB_H
 
-# include "../push_swap.h"
+# include "push_swap.h"
 # include <stdlib.h>
 
 int		clear_array(char **array, size_t i);

@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oerrami <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: oerrami <oerrami@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 22:37:23 by oerrami           #+#    #+#             */
-/*   Updated: 2025/12/17 22:37:57 by oerrami          ###   ########.fr       */
+/*   Created: 2025/12/19 05:13:14 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/19 05:13:17 by oerrami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-#include "get_next_line/get_next_line.h"
-#include "stack/stack.h"
-#include <stdio.h>
 
 void	do_op(t_stack *a, t_stack *b, char *op)
 {
@@ -77,5 +74,7 @@ int	main(int argc, char **argv)
 	}
 	clear(&a);
 	clear(&b);
-	return (0);
+	if (is_valid)
+		return (0);
+	return (1);
 }

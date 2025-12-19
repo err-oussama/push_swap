@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   gnl.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oerrami <oerrami@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/19 05:16:37 by oerrami           #+#    #+#             */
-/*   Updated: 2025/12/19 05:16:38 by oerrami          ###   ########.fr       */
+/*   Created: 2025/12/19 05:14:08 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/19 05:14:10 by oerrami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef GNL_H
+# define GNL_H
 
-# include "lib.h"
-# include "sort.h"
-# include "stack.h"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
 # include <stdlib.h>
 # include <unistd.h>
 
-# define INVALID_INPUT 4294967295
-# define MIN -2147483648
-# define MAX 2147483647
+char	*check_line_in_save_area(char **save_area);
 
-int	check_input(t_stack *a, char **args, int argc);
+char	*join(char *s1, char *s2, size_t ss1, size_t ss2);
+
+char	*get_line_in_save_area(char **save_area);
+
+int		reach_eof_nl(int fd, char **save_area, char *buff);
+
+char	*extract_line(char **save_area);
+
+char	*get_next_line(int fd);
 
 #endif

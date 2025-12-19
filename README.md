@@ -79,11 +79,12 @@ sa
 
 ## Resources
 
+## Resources
 
+For this project, I relied mainly on problem-solving and algorithmic thinking.  
+I researched different sorting strategies and explored various sorting algorithms available online.  
+During this process, I discovered the *butterfly algorithm*, which is commonly used in the Push_swap project.
 
-
-
-
-
+To better understand the algorithm and its behavior, I used AI tools as a learning aid to clarify concepts and explore implementation strategies.
 
 

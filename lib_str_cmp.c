@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   a_to_l.c                                           :+:      :+:    :+:   */
+/*   lib_str_cmp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oerrami <oerrami@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 23:11:28 by oerrami           #+#    #+#             */
-/*   Updated: 2025/12/08 23:11:30 by oerrami          ###   ########.fr       */
+/*   Created: 2025/12/19 05:15:08 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/19 05:15:09 by oerrami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-long	a_to_l(const char *str)
+int	str_cmp(const char *s1, const char *s2)
 {
-	long	n;
-	long	s;
-
-	n = 0;
-	s = 0;
-	if (*str == '+' || *str == '-')
-		if (*str++ == '-')
-			s = 1;
-	if (!*str)
-		return (INVALID_INPUT);
-	while (*str)
+	while (*s1 && *s2)
 	{
-		if (*str < '0' || *str > '9')
-			return (INVALID_INPUT);
-		n = (n * 10) + (*str - '0');
-		str++;
+		if (*s1 != *s2)
+			return (0);
+		s1++;
+		s2++;
 	}
-	if (s)
-		n = -n;
-	if (n > MAX || n < MIN)
-		return (INVALID_INPUT);
-	return (n);
+	return (1);
 }

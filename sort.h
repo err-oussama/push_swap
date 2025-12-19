@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sort.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oerrami <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: oerrami <oerrami@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 22:36:58 by oerrami           #+#    #+#             */
-/*   Updated: 2025/12/17 22:37:00 by oerrami          ###   ########.fr       */
+/*   Created: 2025/12/19 05:16:49 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/19 05:16:50 by oerrami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SORT_H
 # define SORT_H
 
-# include "../push_swap.h"
-# include "../stack/stack.h"
 # include "push_swap.h"
+# include "stack.h"
 
 void	sort(t_stack *a, t_stack *b);
 

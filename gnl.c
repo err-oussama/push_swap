@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oerrami <oerrami@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/19 05:16:37 by oerrami           #+#    #+#             */
-/*   Updated: 2025/12/19 05:16:38 by oerrami          ###   ########.fr       */
+/*   Created: 2025/12/19 05:13:53 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/19 05:13:56 by oerrami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "gnl.h"
 
-# include "lib.h"
-# include "sort.h"
-# include "stack.h"
-# include <stdlib.h>
-# include <unistd.h>
+char	*get_next_line(int fd)
+{
+	static char	*save_area;
+	char		*line;
+	char		*buff;
 
-# define INVALID_INPUT 4294967295
-# define MIN -2147483648
-# define MAX 2147483647
-
-int	check_input(t_stack *a, char **args, int argc);
-
-#endif
+	if (fd < 0 || BUFFER_SIZE < 1)
+		return (NULL);
+	line = check_line_in_save_area(&save_area);
+	if (line)
+		return (line);
+	buff = malloc(BUFFER_SIZE);
+	if (!buff)
+		return (NULL);
+	while (reach_eof_nl(fd, &save_area, buff))
+		;
+	free(buff);
+	line = extract_line(&save_area);
+	return (line);
+}

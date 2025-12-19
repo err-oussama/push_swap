@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_cmp.c                                          :+:      :+:    :+:   */
+/*   lib_str_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oerrami <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: oerrami <oerrami@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 22:34:22 by oerrami           #+#    #+#             */
-/*   Updated: 2025/12/17 22:34:23 by oerrami          ###   ########.fr       */
+/*   Created: 2025/12/19 05:15:35 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/19 05:15:36 by oerrami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-int	str_cmp(const char *s1, const char *s2)
+size_t	str_len(const char *s)
 {
-	while (*s1 && *s2)
-	{
-		if (*s1 != *s2)
-			return (0);
-		s1++;
-		s2++;
-	}
-	return (1);
+	size_t	size;
+
+	size = 0;
+	while (s[size])
+		size++;
+	return (size);
 }

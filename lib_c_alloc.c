@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sub_str.c                                          :+:      :+:    :+:   */
+/*   lib_c_alloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oerrami <oerrami@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/05 21:03:58 by oerrami           #+#    #+#             */
-/*   Updated: 2025/12/05 21:03:59 by oerrami          ###   ########.fr       */
+/*   Created: 2025/12/19 05:14:37 by oerrami           #+#    #+#             */
+/*   Updated: 2025/12/19 05:14:38 by oerrami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-char	*sub_str(char const *s, unsigned int start, size_t len)
+void	*c_alloc(size_t nmemb, size_t size)
 {
-	size_t	s_len;
-	char	*new_str;
+	void	*mem;
+	size_t	total;
 
-	if (!s)
+	if (!nmemb || !size)
 		return (NULL);
-	s_len = str_len(s);
-	if (start > s_len)
+	if (nmemb > (((size_t)-1) / size))
 		return (NULL);
-	if (start + len > s_len)
-		len = s_len - start;
-	new_str = (char *)malloc(len + 1);
-	if (!new_str)
+	total = nmemb * size;
+	mem = malloc(total);
+	if (!mem)
 		return (NULL);
-	str_lcpy(new_str, s + start, len + 1);
-	return (new_str);
+	while (total--)
+		((char *)mem)[total] = 0;
+	return (mem);
 }
